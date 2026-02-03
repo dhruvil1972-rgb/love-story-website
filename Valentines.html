@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Our Love Story ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root{
+    --bg1: linear-gradient(135deg,#ff9a9e,#fad0c4);
+    --bg2: linear-gradient(135deg,#a18cd1,#fbc2eb);
+    --bg3: linear-gradient(135deg,#ff758f,#ff7eb3);
+    --bg4: linear-gradient(135deg,#ff512f,#dd2476);
+    --bg5: linear-gradient(135deg,#667eea,#764ba2); /* New unique background */
+    --bg6: linear-gradient(135deg,#f093fb,#f5576c); /* Another for variety */
+}
+
+body{
+    margin:0;
+    font-family:'Segoe UI',sans-serif;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:var(--bg1);
+    color:white;
+    transition:background 1s ease;
+    overflow:hidden;
+    position:relative;
+}
+
+/* Floating hearts animation for uniqueness */
+.floating-hearts {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+.heart {
+    position: absolute;
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.6);
+    animation: float 6s linear infinite;
+}
+@keyframes float {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+}
+
+/* CARD */
+.card{
+    background:rgba(255,255,255,0.18);
+    backdrop-filter:blur(18px);
+    width:92%;
+    max-width:460px;
+    padding:24px;
+    border-radius:26px;
+    box-shadow:0 20px 50px rgba(0,0,0,.25);
+    animation:slideIn .6s ease;
+    position:relative;
+    z-index:10;
+}
+
+@keyframes slideIn{
+    from{opacity:0;transform:translateY(40px) scale(.95);}
+    to{opacity:1;transform:translateY(0) scale(1);}
+}
+
+h1{text-align:center; animation: glow 2s ease-in-out infinite alternate;}
+@keyframes glow {
+    from { text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff; }
+    to { text-shadow: 0 0 10px #ff4d6d, 0 0 20px #ff4d6d, 0 0 30px #ff4d6d; }
+}
+
+p{text-align:center;line-height:1.6; animation: fadeIn 1s ease;}
+
+/* IMAGE ROW with enhanced animations */
+.hero-row{
+    display:flex;
+    gap:12px;
+    justify-content:center;
+    margin:18px 0;
+}
+.hero-row img{
+    width:48%;
+    border-radius:18px;
+    box-shadow:0 10px 25px rgba(0,0,0,.35);
+    transition: transform 0.5s ease, filter 0.5s ease;
+}
+.hero-row img:hover{
+    transform: scale(1.1) rotate(5deg);
+    filter: brightness(1.2) saturate(1.3);
+}
+
+/* IMAGE GRID with carousel effect */
+.img-row{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(90px,1fr));
+    gap:10px;
+    margin:18px 0;
+    overflow:hidden;
+}
+.img-row img{
+    width:100%;
+    aspect-ratio:1;
+    object-fit:cover;
+    border-radius:14px;
+    transition:.35s;
+    animation: slideUp 0.5s ease;
+}
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+.img-row img:hover{
+    transform:scale(1.15) rotate(2deg);
+    box-shadow: 0 0 20px rgba(255, 77, 109, 0.8);
+}
+
+/* Typing effect for text */
+.typing {
+    border-right: 2px solid white;
+    animation: blink 1s infinite;
+}
+@keyframes blink {
+    0%, 50% { border-color: transparent; }
+    51%, 100% { border-color: white; }
+}
+
+/* OPTIONS with pulse animation */
+.option{
+    background:rgba(255,255,255,.28);
+    padding:14px;
+    margin:10px 0;
+    border-radius:18px;
+    text-align:center;
+    cursor:pointer;
+    transition:.3s;
+    animation: pulse 2s infinite;
+}
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+}
+.option:hover{
+    background:rgba(255,255,255,.45);
+    transform:scale(1.03);
+}
+
+/* BUTTON */
+button{
+    padding:14px 34px;
+    border:none;
+    border-radius:30px;
+    font-size:18px;
+    background:linear-gradient(135deg,#ff4d6d,#ff758f);
+    color:white;
+    cursor:pointer;
+    box-shadow:0 0 20px rgba(255,77,109,.7);
+    transition: transform 0.3s ease;
+}
+button:hover {
+    transform: scale(1.05);
+}
+
+/* YES / NO with enhanced movement */
+.button-area{
+    position:relative;
+    height:140px;
+    margin-top:20px;
+}
+#noBtn{
+    position:absolute;
+    background:#444;
+    transition: all 0.3s ease;
+}
+
+/* HEART */
+.heartbeat{
+    animation:heartbeat 1s infinite;
+}
+@keyframes heartbeat{
+    0%{transform:scale(1)}
+    50%{transform:scale(1.15)}
+    100%{transform:scale(1)}
+}
+
+/* CONFETTI */
+.confetti{
+    position:fixed;
+    top:-10px;
+    font-size:20px;
+    animation:fall 3s linear infinite;
+}
+@keyframes fall{
+    to{transform:translateY(110vh) rotate(360deg)}
+}
+
+/* Progress bar for interactivity */
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+.progress {
+    height: 100%;
+    background: linear-gradient(90deg, #ff4d6d, #ff758f);
+    width: 0%;
+    transition: width 0.5s ease;
+}
+
+/* Music player for uniqueness */
+.music-player {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+.music-player:hover {
+    transform: scale(1.1);
+}
+</style>
+</head>
+
+<body>
+
+<!-- Floating hearts for ambiance -->
+<div class="floating-hearts" id="hearts"></div>
+
+<!-- Music player -->
+<div class="music-player" onclick="toggleMusic()">🎵</div>
+<audio id="bgMusic" loop>
+    <source src="path/to/your/romantic-song.mp3" type="audio/mpeg"> <!-- Replace with actual path or embed -->
+</audio>
+
+<div class="card" id="content">
+    <div class="progress-bar"><div class="progress" id="progress"></div></div>
+    <h1>Hey Babygirl ❤️</h1>
+
+    <div class="hero-row">
+        <img src="images/BW.jpeg" alt="Memory 1">
+        <img src="images/TSM1.jpeg" alt="Memory 2">
+    </div>
+
+    <p class="typing">This little website holds my favourite memories with you 🥹</p>
+    <div style="text-align:center">
+        <button onclick="nextPage()">Start 💕</button>
+    </div>
+</div>
+
+<script>
+let page = 0;
+const body = document.body;
+const progress = document.getElementById('progress');
+const heartsContainer = document.getElementById('hearts');
+let musicPlaying = false;
+
+// Generate floating hearts
+function generateHearts() {
+    for (let i = 0; i < 10; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.innerHTML = '❤️';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDelay = Math.random() * 6 + 's';
+        heartsContainer.appendChild(heart);
+    }
+}
+generateHearts();
+
+function toggleMusic() {
+    const music = document.getElementById('bgMusic');
+    if (musicPlaying) {
+        music.pause();
+    } else {
+        music.play();
+    }
+    musicPlaying = !musicPlaying;
+}
+
+function nextPage(){
+    page++;
+    updateProgress();
+    const c = document.getElementById("content");
+    c.style.animation = "none";
+    c.offsetHeight;
+    c.style.animation = "slideIn .6s ease";
+
+    if(page === 1){
+        body.style.background = "var(--bg2)";
+        c.innerHTML = `
+        <div class="progress-bar"><div class="progress" id="progress"></div></div>
+        <h1>Memory Check ✨</h1>
+        <div class="img-row">
+            <img src="images/TSM3.jpeg" alt="Memory 4">
+        </div>
+        <p>Where did we first meet?</p>
+        <div class="option" onclick="wrong()">Crush Coffee</div>
+        <div class="option" onclick="correct()">Coffee Culture</div>
+        <div class="option" onclick="wrong()">Shambhu's</div>
+        <p id="sad" style="display:none;font-size:32px">😢</p>`;
+        updateProgress();
+    }
+
+    else if(page === 2){
+        body.style.background = "var(--bg3)";
+        c.innerHTML = `
+        <div class="progress-bar"><div class="progress" id="progress"></div></div>
+        <h1>Special Date ⭐</h1>
+        <div class="hero-row">
+            <img src="images/SpecialDate.jpeg" alt="Special Memory">
+        </div>
+        <p>Our anniversary date?</p>
+        <div class="option" onclick="wrong()">09/09/2023</div>
+        <div class="option" onclick="correct()">10/09/2023</div>
+        <div class="option" onclick="wrong()">09/10/2023</div>
+        <p id="sad" style="display:none;font-size:32px">😢</p>`;
+        updateProgress();
+    }
+
+    else if(page === 3){
+        body.style.background = "var(--bg4)";
+        c.innerHTML = `
+        <div class="progress-bar"><div class="progress" id="progress"></div></div>
+        <h1 class="heartbeat">A Message From Heart 💌</h1>
+        <p class="typing">Dear Babygirl, every moment I spent with you is a treasure. From our first coffee to our endless adventures and arguements😅😅😅, you have made my world brighter and Colourful. Will you continue this journey with me?</p>
+        <div style="text-align:center; margin:20px 0;">
+            <button onclick="nextPage()">Next 💕</button>
+        </div>`;
+        updateProgress();
+    }
+
+    else if(page === 4){
+        body.style.background = "var(--bg5)";
+        c.innerHTML = `
+        <div class="progress-bar"><div class="progress" id="progress"></div></div>
+        <h1 class="heartbeat">Memory Slideshow 🎥</h1>
+        <div class="img-row" id="slideshow">
+            <img src="images/Goa1.jpeg" alt="Memory 6" style="display:block;">
+        </div>
+        <p>Relive our moments...</p>
+        <div style="text-align:center; margin:20px 0;">
+            <button onclick="nextSlide()">Next Memory</button>
+            <br><br>
+            <button onclick="nextPage()">Continue 💕</button>
+        </div>`;
+        updateProgress();
+        startSlideshow();
+    }
+
+    else if(page === 5){
+        body.style.background = "var(--bg6)";
+        c.innerHTML = `
+        <div class="progress-bar"><div class="progress" id="progress"></div></div>
+        <h1 class="heartbeat">My Heart 💍</h1>
+        <p>Will you be my forever Valentine? ❤️</p>
+        <div class="button-area">
+            <button onclick="yes()">YES ❤️</button>
+            <button id="noBtn" onmouseover="moveNo()" ontouchstart="moveNo()">NO 😅</button>
+        </div>`;
+        updateProgress();
+    }
+}
+
+function updateProgress() {
+    const percentage = (page / 5) * 100;
+    progress.style.width = percentage + '%';
+}
+
+let slideIndex = 0;
+const slides = ["Goa1", "Goa3", "Movie1", "Sexy3", "Utt-Couple2"];
+
+function startSlideshow() {
+    const slideshow = document.getElementById('slideshow');
+    slideshow.innerHTML = `<img src="images/${slides[slideIndex]}.jpeg" alt="Memory ${slideIndex + 1}" style="display:block; animation: slideUp 0.5s ease;">`;
+}
+
+function nextSlide() {
+    slideIndex = (slideIndex + 1) % slides.length;
+    startSlideshow();
+}
+
+function wrong(){
+    document.getElementById("sad").style.display="block";
+    setTimeout(() => { document.getElementById("sad").style.display="none"; }, 2000);
+}
+
+function correct(){nextPage();}
+
+function yes(){
+    for(let i=0;i<50;i++){ // More confetti
+        const s=document.createElement("div");
+        s.className="confetti";
+        s.style.left=Math.random()*100+"vw";
+        s.style.animationDelay=Math.random()*2+"s";
+        s.innerHTML=["💖","🎉","🌟","❤️"][Math.floor(Math.random()*4)];
+        document.body.appendChild(s);
+    }
+
+    document.getElementById("content").innerHTML=`
+    <div class="progress-bar"><div class="progress" style="width:100%;"></div></div>
+    <h1 class="heartbeat">Forever Us 🥰</h1>
+    <div class="img-row">
+        ${slides.map(i=>`<img src="images/${i}.jpeg" alt="Memory">`).join("")}
+    </div>
+    <p class="typing">❤️ Babygirl, loving you is my favourite thing...<br>
+    ❤️❤️❤️❤️❤️ Babugirl Love you so much ❤️❤️❤️❤️❤️<br>
+    My heart is yours forever...<br>
+    My soul is yours forever...<br>
+    My 11:11 forever...<br>
+    My safest place ❤️</p>`;
+}
+
+function moveNo(){
+    const b=document.getElementById("noBtn");
+    const a=document.querySelector(".button-area");
+    b.style.left = Math.random() * (a.clientWidth - b.offsetWidth) + "px";
+    b.style.top = Math.random() * (a.clientHeight - b.offsetHeight) + "px";
+    b.style.transform = `rotate(${Math.random() * 360}deg)`; // Add rotation for fun
+}
+</script>
+
+</body>
+</html>
